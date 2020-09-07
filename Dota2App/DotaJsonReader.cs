@@ -15,7 +15,7 @@ namespace Dota2App
             string filepath = @"D:\dota-match\yasp-dump-2015-12-18.json";
             string newfile = @"D:\dota-match\workdata.json";
             int counter = 0;
-            int AmountOfGames = 750; //around 100mb in file disk.
+            int AmountOfGames = 750; //around 100mb in file disk. Updated at 14:34
             var lines = File.ReadLines(filepath).Take(AmountOfGames*2);
             //foreach (string line in lines) 
             //{
