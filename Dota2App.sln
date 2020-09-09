@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dota2App", "Dota2App\Dota2App.csproj", "{BEEDBD0F-C5FE-4662-A9F2-A71D6E831BCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dota2App", "Dota2App\Dota2App.csproj", "{BEEDBD0F-C5FE-4662-A9F2-A71D6E831BCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotaDomain", "DotaDomain\DotaDomain.csproj", "{C572EB2F-22A2-47FA-ABE4-F54A001D9FE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotaDomain", "DotaDomain\DotaDomain.csproj", "{C572EB2F-22A2-47FA-ABE4-F54A001D9FE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{DF4910E7-8973-4222-BA6C-F55786534497}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C572EB2F-22A2-47FA-ABE4-F54A001D9FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C572EB2F-22A2-47FA-ABE4-F54A001D9FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C572EB2F-22A2-47FA-ABE4-F54A001D9FE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF4910E7-8973-4222-BA6C-F55786534497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF4910E7-8973-4222-BA6C-F55786534497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF4910E7-8973-4222-BA6C-F55786534497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF4910E7-8973-4222-BA6C-F55786534497}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
