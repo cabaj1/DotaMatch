@@ -18,7 +18,7 @@ namespace Dota2App
                 string dir = Directory.GetCurrentDirectory();
                 Process.Start("explorer.exe", dir);
                 string updatedpath = Console.ReadLine();
-                DotaJsonReader dotaJsonReader = new DotaJsonReader();
+                DotaMatchJsonReader dotaJsonReader = new DotaMatchJsonReader();
                 string output = dotaJsonReader.GetFirstElementFromJson(updatedpath);
                 Console.WriteLine(output);
             }
