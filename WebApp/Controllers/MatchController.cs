@@ -18,6 +18,7 @@ namespace WebApp.Controllers
             return View(matchIndexViewModel);
         }
         [Route("Match/{matchid:int}")]
+        [Route("abcde/{matchid:int}")]
         public IActionResult Game(int matchid) 
         {
             MatchGameViewModel matchGameViewModel = new MatchGameViewModel()
@@ -28,6 +29,10 @@ namespace WebApp.Controllers
 
 
             return View(matchGameViewModel);
+        }
+        public IActionResult Test() 
+        {
+            return View();
         }
     }
 }

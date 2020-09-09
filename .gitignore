@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+#mds
+DotaDomain/staticFiles/html/*.html
+DotaDomain/staticFiles/png/*.png

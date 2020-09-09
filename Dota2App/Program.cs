@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
@@ -22,13 +23,45 @@ namespace Dota2App
                 string output = dotaJsonReader.GetFirstElementFromJson(updatedpath);
                 Console.WriteLine(output);
             }
-            else 
+            else if (keyword == "2") 
+            {
+                DotaHeroJson dotaHero = new DotaHeroJson();
+                List<string> names = dotaHero.GetAllHeroes();
+                names.ForEach(x => Console.WriteLine(x));
+
+                List<string> convertedNames = dotaHero.ConvertNames(names);
+                List<string> links = dotaHero.ConvertNamesToLinks(convertedNames);
+
+                links = dotaHero.ConvertNamesToLinks(names);
+
+                Console.WriteLine("Making hero files");
+                var streams = dotaHero.MakeHeroFiles(names);
+                Console.WriteLine("Closing streams");
+                dotaHero.CloseFileStreams(streams);
+                Console.WriteLine("Download heroes files");
+                dotaHero.DownloadHeroes(convertedNames);
+
+                Console.WriteLine("Making png files");
+                var streams2 = dotaHero.CreateHeroImages(names);
+                Console.WriteLine("Closing streams");
+                dotaHero.CloseFileStreams(streams2);
+
+                Console.WriteLine("Downloading png files");
+                //?dotaHero.DownloadHeroImage(convertedNames); //todo
+                Console.WriteLine("Making json file");
+                dotaHero.CreateJsonFile();
+
+                Console.WriteLine("populate json file");
+                dotaHero.PopulateJsonFile(convertedNames);
+                Console.WriteLine("Finished!");
+            }
+            else
             {
                 Console.WriteLine("Unknown command - exiting program");
             }
             Console.ReadLine();
         }
 
-        
+        //todo fix bug
     }
 }

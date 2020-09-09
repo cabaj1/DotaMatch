@@ -203,7 +203,7 @@
     {
       "name": "skeleton_king",
       "id": 42,
-      "localized_name": "Skeleton King"
+      "localized_name": "Wraith King" //or skeleton king
     },
     {
       "name": "death_prophet",

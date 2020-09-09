@@ -10,7 +10,7 @@ using System.Text.Json;
 
 namespace Dota2App
 {
-    public class DotaJsonReader
+    public class DotaMatchJsonReader
     { //https://stackoverflow.com/questions/43747477/how-to-parse-huge-json-file-as-stream-in-json-net?answertab=active#tab-top
         public string GetFirstElementFromJson(string path){
             try {
@@ -21,25 +21,26 @@ namespace Dota2App
                 }
                 string dir = Directory.GetCurrentDirectory();
 
-                string newfile = dir + "\\..\\..\\..\\..\\DotaDomain\\staticFiles\\workdata.json";
+                string newfile = dir + "\\..\\..\\..\\..\\DotaDomain\\staticFiles\\json\\workdataGames.json";
                 //string newfile = @"D:\dota-match\workdata.json";
                 int counter = 0;
-                int AmountOfGames = 750; //around 100mb in file disk. Updated at 14:34
-                var lines = File.ReadLines(path).Take(AmountOfGames * 2);
-                //foreach (string line in lines) 
-                //{
-                //    Debug.WriteLine(line);
-                //}
+                int AmountOfGames = 750; //around 100mb in file disk.
+                List<string> lines = new List<string>();
+                using (StreamReader sr = new StreamReader(path)) 
+                {
+                    lines.Append(sr.ReadLine());
+                }
+                string[] linesString = lines.Append(@"]").ToArray();
                 if (File.Exists(newfile))
                 {
                     File.Delete(newfile);
                 }
-                lines = lines.ToList().Append(@"]").ToArray();
                 File.WriteAllLines(newfile, lines);
                 return "Success!";
             }
-            catch (Exception) 
+            catch (Exception ex) 
             {
+                Console.WriteLine(ex);
                 return "Error";
             }
         }
