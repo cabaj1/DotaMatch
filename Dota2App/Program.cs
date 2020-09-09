@@ -21,8 +21,12 @@ namespace Dota2App
                 DotaJsonReader dotaJsonReader = new DotaJsonReader();
                 string output = dotaJsonReader.GetFirstElementFromJson(updatedpath);
                 Console.WriteLine(output);
-                Console.ReadLine();
             }
+            else 
+            {
+                Console.WriteLine("Unknown command - exiting program");
+            }
+            Console.ReadLine();
         }
 
         
