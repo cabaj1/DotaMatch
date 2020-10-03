@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using DotaDomain.jsonReader;
 
 namespace Dota2App
@@ -73,17 +74,36 @@ namespace Dota2App
                     if (counter % 2 == 1)
                     {
                         GameJson gameJson = JsonConvert.DeserializeObject<GameJson>(game);
-                        AddGamesToHeroWinRate(gameJson, heroWinRates);
+                        if (gameJson.radiant_win != null)
+                        {
+                            AddGamesToHeroWinRate(gameJson, heroWinRates);
+                        }
+
+                    }
+
+                    if (counter % 100==0)
+                    {
+                        Console.WriteLine($"Went through {counter} lines");
+                    }
+                    if (counter % 1000 == 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"Went through {counter} lines");
+                        Console.ResetColor();
                     }
 
                 }
             }
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"**************Went through {counter} lines");
+            Console.ResetColor();
             return heroWinrates;
         }
 
         private void AddGamesToHeroWinRate(GameJson gameJson, List<HeroWinrate> heroWinrates)
         {
-            bool hasRadiantWon = gameJson.radiant_win;
+            bool hasRadiantWon = (bool)gameJson.radiant_win;
             for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; i < 5; i++)
@@ -93,14 +113,18 @@ namespace Dota2App
                     herowinrate.HeroVersusId = gameJson.players[5+j].hero_id;//gameJson.players.First(x => x.player_slot == 5+j).player_slot;
 
                     int index = heroWinrates.FindIndex(a => a.Equals(herowinrate)); //11458
-                    if (hasRadiantWon)
+                    if (index != -1)
                     {
-                        heroWinrates.ElementAt(index).AddWin();
+                        if (hasRadiantWon)
+                        {
+                            heroWinrates.ElementAt(index).AddWin();
+                        }
+                        else
+                        {
+                            heroWinrates.ElementAt(index).AddGame();
+                        }
                     }
-                    else
-                    {
-                        heroWinrates.ElementAt(index).AddGame();
-                    }
+
                 }
             }
         }

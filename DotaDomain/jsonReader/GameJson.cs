@@ -5,7 +5,7 @@
     {
         public int match_id { get; set; }
         public int match_seq_num { get; set; }
-        public bool radiant_win { get; set; }
+        public bool? radiant_win { get; set; }
         public int start_time { get; set; }
         public int duration { get; set; }
         public int tower_status_radiant { get; set; }

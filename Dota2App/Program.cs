@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
+using DotaDomain;
 
 namespace Dota2App
 {
@@ -61,9 +65,23 @@ namespace Dota2App
                 Console.WriteLine("Creating list");
                 var list = matchUpReader.CreateList();
                 Console.WriteLine("Set up blanco win rates");
-                var heroWinRates =  matchUpReader.SetUpHeroWinRates(list);
+                List<HeroWinrate> heroWinRates =  matchUpReader.SetUpHeroWinRates(list);
                 Console.WriteLine("Read json file and count games & losses");
-                heroWinRates = matchUpReader.FillInHeroWinrate(heroWinRates, null);
+                string filepath = @"D:\dota-match\yasp-dump-2015-12-18.json";
+                heroWinRates = matchUpReader.FillInHeroWinrate(heroWinRates, filepath);
+                //Task<List<HeroWinrate>> myTask = Task.Run(async () => await matchUpReader.FillInHeroWinrate(heroWinRates, filepath));
+                //int counter = 0;
+                //while (!myTask.IsCompleted)
+                //{
+                //    if (counter == 15)
+                //    {
+                //        Console.WriteLine("");
+                //        counter = 0;
+                //    }
+                //    Console.Write("*");
+                //    Thread.Sleep(1000); //miliseconden
+                //    counter++;
+                //}
                 Console.WriteLine("Write to json");
                 matchUpReader.WriteToJsonFile(heroWinRates,null,null);
                 Console.WriteLine("Finished!!");
@@ -74,7 +92,5 @@ namespace Dota2App
             }
             Console.ReadLine();
         }
-
-        //todo fix bug
     }
 }
