@@ -38,7 +38,7 @@ namespace Dota2App
             CreateJsonFile<PrimaryAttribute>(JsonStrings._PRIMARYATTRIBUTES, "PrimaryAttribute.json");
             CreateJsonFile<Roles>(JsonStrings._ROLES, "Roles.json");
             //todo
-            //CreateJsonFile<VoiceActors>(JsonStrings._VOICEACTORS, "VoiceActors.json");
+            CreateJsonFile<VoiceActor>(JsonStrings._VOICEACTORS, "VoiceActors.json");
 
         }
 
@@ -82,6 +82,12 @@ namespace Dota2App
                 JsonSerializer serializer = new JsonSerializer();
                 roles = (List<Roles>)serializer.Deserialize(file, typeof(List<Roles>));
             }
+            List<VoiceActor> voiceActors;
+            using (StreamReader file = File.OpenText(filepath + "VoiceActors.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                voiceActors = (List<VoiceActor>)serializer.Deserialize(file, typeof(List<VoiceActor>));
+            }
             foreach (JsonHero hero in jsonHeroes)
             {
                 string pa = hero.PrimaryAttribute;
@@ -107,6 +113,13 @@ namespace Dota2App
                 hero.RolesId = roles
                     .Where(y => strings.Contains(y.Name))
                     .Select(x => x.Id);
+
+                //todo voice actors
+                string va = hero.VoiceActor;
+                hero.VoiceActorId = voiceActors
+                    .Where(x => x.Name == va)
+                    .Select(x => x.Id)
+                    .Single();
             }
 
             string json = JsonConvert.SerializeObject(jsonHeroes);

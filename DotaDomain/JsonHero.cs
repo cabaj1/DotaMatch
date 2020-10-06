@@ -45,6 +45,7 @@ namespace DotaDomain
         public string Image { get; set; }
         public string Lore { get; set; }
         public string VoiceActor { get; set; }
+        public int VoiceActorId { get; set; }
         public string SecondName { get; set; }
     }
 }
