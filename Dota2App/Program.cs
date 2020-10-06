@@ -86,6 +86,16 @@ namespace Dota2App
                 matchUpReader.WriteToJsonFile(heroWinRates,null,null);
                 Console.WriteLine("Finished!!");
             }
+            else if (keyword == "4")
+            {
+                JsonTransformer jsonTransformer = new JsonTransformer();
+                Console.WriteLine("Create roles, primary attribute, roles, gibtype json files");
+                jsonTransformer.CreateJsonFiles();
+                Console.WriteLine("Create hero file");
+                jsonTransformer.SetRolesIdInJsonFile();
+                Console.WriteLine("Finished");
+
+            }
             else
             {
                 Console.WriteLine("Unknown command - exiting program");

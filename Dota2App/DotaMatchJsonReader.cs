@@ -26,7 +26,7 @@ namespace Dota2App
                 int counter = 0;
                 int AmountOfGames = 750; //around 100mb in file disk.
                 List<string> lines = new List<string>();
-                using (StreamReader sr = new StreamReader(path)) 
+                using (StreamReader sr = new StreamReader(path))
                 {
                     lines.Append(sr.ReadLine());
                 }
@@ -38,7 +38,7 @@ namespace Dota2App
                 File.WriteAllLines(newfile, lines);
                 return "Success!";
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 return "Error";

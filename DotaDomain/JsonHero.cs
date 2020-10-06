@@ -8,6 +8,7 @@ namespace DotaDomain
     {
         public string Name { get; set; }
         public string PrimaryAttribute { get; set; }
+        public int PrimaryAttributeId { get; set; }
         public int StartStrength { get; set; }
         public int StartAgility { get; set; }
         public int StartIntelligence { get; set; }
@@ -37,7 +38,9 @@ namespace DotaDomain
         public int CollisionSize { get; set; }
         public int Legs { get; set; }
         public string GibType { get; set; }
+        public int GibTypeId { get; set; }
         public IEnumerable<string> Roles { get; set; }
+        public IEnumerable<int> RolesId { get; set; }
         public string AttackType { get; set; }
         public string Image { get; set; }
         public string Lore { get; set; }
