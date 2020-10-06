@@ -14,7 +14,10 @@ namespace Dota2App
         private static void Main(string[] args)
         {
             Console.WriteLine("Press 1 to select a file and get the first 750 matches from your json dump.");
-            Console.WriteLine("Check https://blog.opendota.com/2015/12/20/datadump/ to download it");
+            Console.WriteLine("Press 2 to make basic hero json & download images. This can take up to 15 min");
+            Console.WriteLine("Press 3 to loop through gamedata files, this can take a few hours for 64gb file");
+            Console.WriteLine("Press 4 to get ids of gibtype, roles, primary attribute and voice actors in your hero file");
+            Console.WriteLine("Check https://blog.opendota.com/2015/12/20/datadump/ to download the data dump");
             string keyword = Console.ReadLine();
             if (keyword == "1")
             {
